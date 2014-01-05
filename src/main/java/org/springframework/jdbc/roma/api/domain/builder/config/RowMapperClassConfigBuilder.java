@@ -19,6 +19,8 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
+import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
 /**
  * @author Serkan ÖZAL
@@ -28,12 +30,22 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	private Class<?> clazz;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	private Class<? extends ColumnNameResolver> columnNameResolverClass;
+	private Class<? extends TableNameResolver> tableNameResolverClass;
+	private String dataSourceName;
+	private String schemaName;
+	private String tableName;
 	
 	@Override
 	public RowMapperClassConfig build() {
 		RowMapperClassConfig config = new RowMapperClassConfig();
 		config.setClazz(clazz);
 		config.setGeneratorFactoryClass(generatorFactoryClass);
+		config.setColumnNameResolverClass(columnNameResolverClass);
+		config.setTableNameResolverClass(tableNameResolverClass);
+		config.setDataSourceName(dataSourceName);
+		config.setSchemaName(schemaName);
+		config.setTableName(tableName);
 		return config;
 	}
 	
@@ -47,6 +59,35 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 		if (generatorFactoryClass != null && generatorFactoryClass.equals(RowMapperGeneratorFactory.class) == false) {
 			this.generatorFactoryClass = generatorFactoryClass;
 		}	
+		return this;
+	}
+	
+	public RowMapperClassConfigBuilder columnNameResolverClass(Class<? extends ColumnNameResolver> columnNameResolverClass) {
+		if (columnNameResolverClass != null && columnNameResolverClass.equals(ColumnNameResolver.class) == false) {
+			this.columnNameResolverClass = columnNameResolverClass;
+		}	
+		return this;
+	}
+	
+	public RowMapperClassConfigBuilder tableNameResolverClass(Class<? extends TableNameResolver> tableNameResolverClass) {
+		if (tableNameResolverClass != null && tableNameResolverClass.equals(TableNameResolver.class) == false) {
+			this.tableNameResolverClass = tableNameResolverClass;
+		}	
+		return this;
+	}
+	
+	public RowMapperClassConfigBuilder dataSourceName(String dataSourceName) {
+		this.dataSourceName = dataSourceName;
+		return this;
+	}
+	
+	public RowMapperClassConfigBuilder schemaName(String schemaName) {
+		this.schemaName = schemaName;
+		return this;
+	}
+	
+	public RowMapperClassConfigBuilder tableName(String tableName) {
+		this.tableName = tableName;
 		return this;
 	}
 	

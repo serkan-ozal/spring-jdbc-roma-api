@@ -17,6 +17,8 @@
 package org.springframework.jdbc.roma.api.domain.model.config;
 
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
+import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
 /**
  * @author Serkan ÖZAL
@@ -25,6 +27,11 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	private Class<? extends ColumnNameResolver> columnNameResolverClass;
+	private Class<? extends TableNameResolver> tableNameResolverClass;
+	private String dataSourceName;
+	private String schemaName;
+	private String tableName;
 	
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperGeneratorFactory> getGeneratorFactoryClass() {
@@ -34,6 +41,46 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 	@SuppressWarnings("rawtypes")
 	public void setGeneratorFactoryClass(Class<? extends RowMapperGeneratorFactory> generatorFactoryClass) {
 		this.generatorFactoryClass = generatorFactoryClass;
+	}
+	
+	public Class<? extends ColumnNameResolver> getColumnNameResolverClass() {
+		return columnNameResolverClass;
+	}
+	
+	public void setColumnNameResolverClass(Class<? extends ColumnNameResolver> columnNameResolverClass) {
+		this.columnNameResolverClass = columnNameResolverClass;
+	}
+	
+	public Class<? extends TableNameResolver> getTableNameResolverClass() {
+		return tableNameResolverClass;
+	}
+	
+	public void setTableNameResolverClass(Class<? extends TableNameResolver> tableNameResolverClass) {
+		this.tableNameResolverClass = tableNameResolverClass;
+	}
+	
+	public String getDataSourceName() {
+		return dataSourceName;
+	}
+	
+	public void setDataSourceName(String dataSourceName) {
+		this.dataSourceName = dataSourceName;
+	}
+	
+	public String getSchemaName() {
+		return schemaName;
+	}
+	
+	public void setSchemaName(String schemaName) {
+		this.schemaName = schemaName;
+	}
+	
+	public String getTableName() {
+		return tableName;
+	}
+	
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	
 }

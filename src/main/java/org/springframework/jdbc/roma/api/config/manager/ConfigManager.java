@@ -19,6 +19,7 @@ package org.springframework.jdbc.roma.api.config.manager;
 import java.lang.reflect.Field;
 import java.util.List;
 
+import org.springframework.jdbc.roma.api.config.DefaultConfigs;
 import org.springframework.jdbc.roma.api.config.provider.ConfigProvider;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperBlobFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
@@ -33,6 +34,8 @@ import org.springframework.jdbc.roma.api.domain.model.config.RowMapperTimestampF
  */
 public interface ConfigManager {
 
+	public DefaultConfigs getDefaultConfigs();
+	
 	public void addConfigProvider(ConfigProvider configProvider);
 	public void removeConfigProvider(ConfigProvider configProvider);
 	public List<ConfigProvider> getAllConfigProviders();
