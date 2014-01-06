@@ -16,12 +16,25 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
+import java.util.Map;
+
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperEnumField.NumericEnumMapper;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperEnumField.StringEnumMapper;
+
 /**
  * @author Serkan ÖZAL
  */
 public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 
 	private String[] constantsAndMaps;
+	private int enumStartValue;
+	private Map<Integer, String> numericValueStringMappings;
+	private Map<String, String> stringValueStringMappings;
+	private Map<Integer, Integer> numericValueNumericMappings;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends NumericEnumMapper> numericMapperClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends StringEnumMapper> stringMapperClass;
 	
 	public String[] getConstantsAndMaps() {
 		return constantsAndMaps;
@@ -30,5 +43,57 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 	public void setConstantsAndMaps(String[] constantsAndMaps) {
 		this.constantsAndMaps = constantsAndMaps;
 	}
-	
+
+	public int getEnumStartValue() {
+		return enumStartValue;
+	}
+
+	public void setEnumStartValue(int enumStartValue) {
+		this.enumStartValue = enumStartValue;
+	}
+
+	public Map<Integer, String> getNumericValueStringMappings() {
+		return numericValueStringMappings;
+	}
+
+	public void setNumericValueStringMappings(Map<Integer, String> numericValueStringMappings) {
+		this.numericValueStringMappings = numericValueStringMappings;
+	}
+
+	public Map<String, String> getStringValueStringMappings() {
+		return stringValueStringMappings;
+	}
+
+	public void setStringValueStringMappings(Map<String, String> stringValueStringMappings) {
+		this.stringValueStringMappings = stringValueStringMappings;
+	}
+
+	public Map<Integer, Integer> getNumericValueNumericMappings() {
+		return numericValueNumericMappings;
+	}
+
+	public void setNumericValueNumericMappings(Map<Integer, Integer> numericValueNumericMappings) {
+		this.numericValueNumericMappings = numericValueNumericMappings;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Class<? extends NumericEnumMapper> getNumericMapperClass() {
+		return numericMapperClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setNumericMapperClass(Class<? extends NumericEnumMapper> numericMapperClass) {
+		this.numericMapperClass = numericMapperClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Class<? extends StringEnumMapper> getStringMapperClass() {
+		return stringMapperClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setStringMapperClass(Class<? extends StringEnumMapper> stringMapperClass) {
+		this.stringMapperClass = stringMapperClass;
+	}
+
 }

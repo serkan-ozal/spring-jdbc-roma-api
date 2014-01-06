@@ -28,6 +28,93 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RowMapperEnumField {
 	
+	@Deprecated
 	public String[] constantsAndMaps() default {};
+	
+	public int enumStartValue() default 0;
+	
+	public RowMapperEnumAutoMapper mapViaAutoMapper() 
+				default @RowMapperEnumAutoMapper;
+	public RowMapperEnumNumericMapper mapViaNumericMapper() 
+				default @RowMapperEnumNumericMapper(mapper = NumericEnumMapper.class);
+	public RowMapperEnumStringMapper mapViaStringMapper() 
+				default @RowMapperEnumStringMapper(mapper = StringEnumMapper.class);
+	
+	////////////////////////////////////////////////////////////////////////////////////
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumNumericValueNumericMapping {
+		
+		public int value();
+		public int mappingIndex();
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumNumericValueStringMapping {
+		
+		public int value();
+		public String mappingValue();
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumStringValueStringMapping {
+		
+		public String value();
+		public String mappingValue();
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumAutoMapper {
+		
+		public RowMapperEnumNumericValueNumericMapping[] mapViaNumericValueNumericMapping() default {};
+		public RowMapperEnumNumericValueStringMapping[] mapViaNumericValueStringMapping() default {};
+		public RowMapperEnumStringValueStringMapping[] mapViaStringValueStringMapping() default {};
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumNumericMapper {
+		
+		@SuppressWarnings("rawtypes")
+		public Class<? extends NumericEnumMapper> mapper();
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumStringMapper {
+		
+		@SuppressWarnings("rawtypes")
+		public Class<? extends StringEnumMapper> mapper();
+		
+	}
+	
+	interface EnumMapper<E extends Enum<?>, T> {
+		
+		E map(T value);
+		
+	}
+	
+	interface NumericEnumMapper<E extends Enum<?>> extends EnumMapper<E, Integer> {
+		
+		@Override
+		E map(Integer value);
+		
+	}
+	
+	interface StringEnumMapper<E extends Enum<?>> extends EnumMapper<E, String> {
+		
+		@Override
+		E map(String value);
+		
+	}
 	
 }
