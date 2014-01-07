@@ -59,6 +59,16 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		return this;
 	}
 	
+	public RowMapperEnumFieldConfigBuilder constantsAndMaps(String[] constantsAndMaps) {
+		this.constantsAndMaps = constantsAndMaps;
+		return this;
+	}
+	
+	public RowMapperEnumFieldConfigBuilder enumStartValue(int enumStartValue) {
+		this.enumStartValue = enumStartValue;
+		return this;
+	}
+	
 	public RowMapperEnumFieldConfigBuilder numericValueStringMappings(Map<Integer, String> numericValueStringMappings) {
 		this.numericValueStringMappings = numericValueStringMappings;
 		return this;
@@ -83,7 +93,7 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public RowMapperEnumFieldConfigBuilder constantsAndMaps(Class<? extends StringEnumMapper> stringMapperClass) {
+	public RowMapperEnumFieldConfigBuilder stringMapperClass(Class<? extends StringEnumMapper> stringMapperClass) {
 		if (stringMapperClass.equals(StringEnumMapper.class) == false) {
 			this.stringMapperClass = stringMapperClass;
 		}	

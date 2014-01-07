@@ -73,9 +73,9 @@ public @interface RowMapperEnumField {
 	@Retention(RetentionPolicy.RUNTIME)
 	@interface RowMapperEnumAutoMapper {
 		
-		public RowMapperEnumNumericValueNumericMapping[] mapViaNumericValueNumericMapping() default {};
-		public RowMapperEnumNumericValueStringMapping[] mapViaNumericValueStringMapping() default {};
-		public RowMapperEnumStringValueStringMapping[] mapViaStringValueStringMapping() default {};
+		public RowMapperEnumNumericValueNumericMapping[] mapViaNumericValueNumericMappings() default {};
+		public RowMapperEnumNumericValueStringMapping[] mapViaNumericValueStringMappings() default {};
+		public RowMapperEnumStringValueStringMapping[] mapViaStringValueStringMappings() default {};
 		
 	}
 	
