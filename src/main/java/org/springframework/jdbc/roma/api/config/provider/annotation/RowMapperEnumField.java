@@ -33,6 +33,8 @@ public @interface RowMapperEnumField {
 	
 	public int enumStartValue() default 0;
 	
+	public boolean useStringValue() default false;
+	
 	public RowMapperEnumAutoMapper mapViaAutoMapper() 
 				default @RowMapperEnumAutoMapper;
 	public RowMapperEnumNumericMapper mapViaNumericMapper() 

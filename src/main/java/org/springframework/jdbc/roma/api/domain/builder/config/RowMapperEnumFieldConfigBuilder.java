@@ -30,8 +30,9 @@ import org.springframework.jdbc.roma.api.domain.model.config.RowMapperEnumFieldC
 public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFieldConfig> {
 
 	private Field field;
-	private String[] constantsAndMaps;
+	private Map<Integer, String> constantsAndMaps;
 	private int enumStartValue;
+	private boolean useStringValue;
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
 	private Map<Integer, Integer> numericValueNumericMappings;
@@ -46,6 +47,7 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		config.setField(field);
 		config.setConstantsAndMaps(constantsAndMaps);
 		config.setEnumStartValue(enumStartValue);
+		config.setUseStringValue(useStringValue);
 		config.setNumericValueStringMappings(numericValueStringMappings);
 		config.setStringValueStringMappings(stringValueStringMappings);
 		config.setNumericValueNumericMappings(numericValueNumericMappings);
@@ -59,13 +61,18 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		return this;
 	}
 	
-	public RowMapperEnumFieldConfigBuilder constantsAndMaps(String[] constantsAndMaps) {
+	public RowMapperEnumFieldConfigBuilder constantsAndMaps(Map<Integer, String> constantsAndMaps) {
 		this.constantsAndMaps = constantsAndMaps;
 		return this;
 	}
 	
 	public RowMapperEnumFieldConfigBuilder enumStartValue(int enumStartValue) {
 		this.enumStartValue = enumStartValue;
+		return this;
+	}
+	
+	public RowMapperEnumFieldConfigBuilder useStringValue(boolean useStringValue) {
+		this.useStringValue = useStringValue;
 		return this;
 	}
 	

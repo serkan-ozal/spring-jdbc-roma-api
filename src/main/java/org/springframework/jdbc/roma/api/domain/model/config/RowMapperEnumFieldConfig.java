@@ -26,7 +26,8 @@ import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperEnu
  */
 public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 
-	private String[] constantsAndMaps;
+	private Map<Integer, String> constantsAndMaps;
+	private boolean useStringValue;
 	private int enumStartValue;
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
@@ -36,12 +37,20 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 	@SuppressWarnings("rawtypes")
 	private Class<? extends StringEnumMapper> stringMapperClass;
 	
-	public String[] getConstantsAndMaps() {
+	public Map<Integer, String> getConstantsAndMaps() {
 		return constantsAndMaps;
 	}
 	
-	public void setConstantsAndMaps(String[] constantsAndMaps) {
+	public void setConstantsAndMaps(Map<Integer, String> constantsAndMaps) {
 		this.constantsAndMaps = constantsAndMaps;
+	}
+	
+	public boolean isUseStringValue() {
+		return useStringValue;
+	}
+	
+	public void setUseStringValue(boolean useStringValue) {
+		this.useStringValue = useStringValue;
 	}
 
 	public int getEnumStartValue() {
