@@ -16,6 +16,7 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
+import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
 import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
 import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
@@ -27,6 +28,8 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	private Class<? extends ColumnNameResolver> columnNameResolverClass;
 	private Class<? extends TableNameResolver> tableNameResolverClass;
 	private String dataSourceName;
@@ -41,6 +44,16 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 	@SuppressWarnings("rawtypes")
 	public void setGeneratorFactoryClass(Class<? extends RowMapperGeneratorFactory> generatorFactoryClass) {
 		this.generatorFactoryClass = generatorFactoryClass;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Class<? extends RowMapperObjectCreater> getObjectCreaterClass() {
+		return objectCreaterClass;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setObjectCreaterClass(Class<? extends RowMapperObjectCreater> objectCreaterClass) {
+		this.objectCreaterClass = objectCreaterClass;
 	}
 	
 	public Class<? extends ColumnNameResolver> getColumnNameResolverClass() {

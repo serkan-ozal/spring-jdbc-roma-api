@@ -16,6 +16,7 @@
 
 package org.springframework.jdbc.roma.api.domain.builder.config;
 
+import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
@@ -30,6 +31,8 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	private Class<?> clazz;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	private Class<? extends ColumnNameResolver> columnNameResolverClass;
 	private Class<? extends TableNameResolver> tableNameResolverClass;
 	private String dataSourceName;
@@ -41,6 +44,7 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 		RowMapperClassConfig config = new RowMapperClassConfig();
 		config.setClazz(clazz);
 		config.setGeneratorFactoryClass(generatorFactoryClass);
+		config.setObjectCreaterClass(objectCreaterClass);
 		config.setColumnNameResolverClass(columnNameResolverClass);
 		config.setTableNameResolverClass(tableNameResolverClass);
 		config.setDataSourceName(dataSourceName);
@@ -58,6 +62,14 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	public RowMapperClassConfigBuilder generatorFactoryClass(Class<? extends RowMapperGeneratorFactory> generatorFactoryClass) {
 		if (generatorFactoryClass != null && generatorFactoryClass.equals(RowMapperGeneratorFactory.class) == false) {
 			this.generatorFactoryClass = generatorFactoryClass;
+		}	
+		return this;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public RowMapperClassConfigBuilder objectCreaterClass(Class<? extends RowMapperObjectCreater> objectCreaterClass) {
+		if (objectCreaterClass != null && objectCreaterClass.equals(RowMapperObjectCreater.class) == false) {
+			this.objectCreaterClass = objectCreaterClass;
 		}	
 		return this;
 	}
