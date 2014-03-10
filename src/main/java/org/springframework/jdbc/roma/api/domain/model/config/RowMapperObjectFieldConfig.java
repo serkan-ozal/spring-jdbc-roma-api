@@ -22,6 +22,7 @@ package org.springframework.jdbc.roma.api.domain.model.config;
 public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 
 	private RowMapperSpringProviderConfig rowMapperSpringProviderConfig;
+	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
 	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private Class<?> fieldType;
@@ -33,6 +34,14 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 
 	public void setRowMapperSpringProviderConfig(RowMapperSpringProviderConfig rowMapperSpringProviderConfig) {
 		this.rowMapperSpringProviderConfig = rowMapperSpringProviderConfig;
+	}
+	
+	public RowMapperSqlProviderConfig getRowMapperSqlProviderConfig() {
+		return rowMapperSqlProviderConfig;
+	}
+	
+	public void setRowMapperSqlProviderConfig(RowMapperSqlProviderConfig rowMapperSqlProviderConfig) {
+		this.rowMapperSqlProviderConfig = rowMapperSqlProviderConfig;
 	}
 
 	public RowMapperImplementationProviderConfig getRowMapperImplementationProviderConfig() {

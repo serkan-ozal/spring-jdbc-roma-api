@@ -23,6 +23,7 @@ import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProv
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperImplementationProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSpringProviderConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
 
 /**
  * @author Serkan ÖZAL
@@ -31,6 +32,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 
 	private Field field;
 	private RowMapperSpringProviderConfig rowMapperSpringProviderConfig;
+	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
 	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private Class<?> fieldType;
@@ -41,6 +43,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		RowMapperObjectFieldConfig config = new RowMapperObjectFieldConfig();
 		config.setField(field);
 		config.setRowMapperSpringProviderConfig(rowMapperSpringProviderConfig);
+		config.setRowMapperSqlProviderConfig(rowMapperSqlProviderConfig);
 		config.setRowMapperImplementationProviderConfig(rowMapperImplementationProviderConfig);
 		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
 		config.setFieldType(fieldType);
@@ -56,6 +59,12 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	public RowMapperObjectFieldConfigBuilder rowMapperSpringProviderConfig(
 			RowMapperSpringProviderConfig rowMapperSpringProviderConfig) {
 		this.rowMapperSpringProviderConfig = rowMapperSpringProviderConfig;
+		return this;
+	}
+	
+	public RowMapperObjectFieldConfigBuilder rowMapperSqlProviderConfig(
+			RowMapperSqlProviderConfig rowMapperSqlProviderConfig) {
+		this.rowMapperSqlProviderConfig = rowMapperSqlProviderConfig;
 		return this;
 	}
 	

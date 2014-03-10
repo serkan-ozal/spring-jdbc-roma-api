@@ -24,16 +24,11 @@ import java.lang.annotation.Target;
 /**
  * @author Serkan ÖZAL
  */
-@Target({ElementType.FIELD})
+@Target({ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperObjectField {
+public @interface RowMapperSqlProvider {
 	
-	public RowMapperSpringProvider provideViaSpringProvider() default @RowMapperSpringProvider;
-	public RowMapperSqlProvider provideViaSqlProvider() default @RowMapperSqlProvider;
-	public RowMapperImplementationProvider provideViaImplementationProvider() default @RowMapperImplementationProvider;
-	public RowMapperCustomProvider provideViaCustomProvider() default @RowMapperCustomProvider;
-	
-	public Class<?> fieldType() default Object.class;
-	public boolean lazy() default false;
+	public String provideSql() default "";
+	public String dataSourceName() default "";
 	
 }
