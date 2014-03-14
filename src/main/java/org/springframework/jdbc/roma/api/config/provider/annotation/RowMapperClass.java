@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 
 import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.processor.RowMapperObjectProcessor;
 import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
 import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
@@ -37,6 +38,8 @@ public @interface RowMapperClass {
 	public Class<? extends RowMapperGeneratorFactory> generatorFactory() default RowMapperGeneratorFactory.class;
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperObjectCreater> objectCreater() default RowMapperObjectCreater.class;
+	@SuppressWarnings("rawtypes")
+	public Class<? extends RowMapperObjectProcessor> objectProcessor() default RowMapperObjectProcessor.class;
 	public Class<? extends ColumnNameResolver> columnNameResolver() default ColumnNameResolver.class;
 	public Class<? extends TableNameResolver> tableNameResolver() default TableNameResolver.class;
 	public String dataSourceName() default "";

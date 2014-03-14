@@ -20,6 +20,7 @@ import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.processor.RowMapperObjectProcessor;
 import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
 import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
@@ -33,6 +34,8 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperObjectProcessor> objectProcessorClass;
 	private Class<? extends ColumnNameResolver> columnNameResolverClass;
 	private Class<? extends TableNameResolver> tableNameResolverClass;
 	private String dataSourceName;
@@ -45,6 +48,7 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 		config.setClazz(clazz);
 		config.setGeneratorFactoryClass(generatorFactoryClass);
 		config.setObjectCreaterClass(objectCreaterClass);
+		config.setObjectProcessorClass(objectProcessorClass);
 		config.setColumnNameResolverClass(columnNameResolverClass);
 		config.setTableNameResolverClass(tableNameResolverClass);
 		config.setDataSourceName(dataSourceName);
@@ -70,6 +74,14 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	public RowMapperClassConfigBuilder objectCreaterClass(Class<? extends RowMapperObjectCreater> objectCreaterClass) {
 		if (objectCreaterClass != null && objectCreaterClass.equals(RowMapperObjectCreater.class) == false) {
 			this.objectCreaterClass = objectCreaterClass;
+		}	
+		return this;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public RowMapperClassConfigBuilder objectProcessorClass(Class<? extends RowMapperObjectProcessor> objectProcessorClass) {
+		if (objectProcessorClass != null && objectProcessorClass.equals(RowMapperObjectProcessor.class) == false) {
+			this.objectProcessorClass = objectProcessorClass;
 		}	
 		return this;
 	}
