@@ -64,6 +64,15 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
+	@interface RowMapperEnumStringValueNumericMapping {
+		
+		public String value();
+		public int mappingIndex();
+		
+	}
+	
+	@Target({ElementType.ANNOTATION_TYPE})
+	@Retention(RetentionPolicy.RUNTIME)
 	@interface RowMapperEnumStringValueStringMapping {
 		
 		public String value();
@@ -77,6 +86,7 @@ public @interface RowMapperEnumField {
 		
 		public RowMapperEnumNumericValueNumericMapping[] mapViaNumericValueNumericMappings() default {};
 		public RowMapperEnumNumericValueStringMapping[] mapViaNumericValueStringMappings() default {};
+		public RowMapperEnumStringValueNumericMapping[] mapViaStringValueNumericMappings() default {};
 		public RowMapperEnumStringValueStringMapping[] mapViaStringValueStringMappings() default {};
 		
 	}

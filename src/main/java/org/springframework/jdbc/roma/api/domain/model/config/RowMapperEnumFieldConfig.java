@@ -32,6 +32,7 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
 	private Map<Integer, Integer> numericValueNumericMappings;
+	private Map<String, Integer> stringValueNumericMappings;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends NumericEnumMapper> numericMapperClass;
 	@SuppressWarnings("rawtypes")
@@ -83,6 +84,14 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 
 	public void setNumericValueNumericMappings(Map<Integer, Integer> numericValueNumericMappings) {
 		this.numericValueNumericMappings = numericValueNumericMappings;
+	}
+	
+	public Map<String, Integer> getStringValueNumericMappings() {
+		return stringValueNumericMappings;
+	}
+	
+	public void setStringValueNumericMappings(Map<String, Integer> stringValueNumericMappings) {
+		this.stringValueNumericMappings = stringValueNumericMappings;
 	}
 
 	@SuppressWarnings("rawtypes")

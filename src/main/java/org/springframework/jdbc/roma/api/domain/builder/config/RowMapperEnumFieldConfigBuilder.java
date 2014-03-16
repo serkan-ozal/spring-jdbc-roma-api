@@ -36,6 +36,7 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
 	private Map<Integer, Integer> numericValueNumericMappings;
+	private Map<String, Integer> stringValueNumericMappings;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends NumericEnumMapper> numericMapperClass;
 	@SuppressWarnings("rawtypes")
@@ -51,6 +52,7 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		config.setNumericValueStringMappings(numericValueStringMappings);
 		config.setStringValueStringMappings(stringValueStringMappings);
 		config.setNumericValueNumericMappings(numericValueNumericMappings);
+		config.setStringValueNumericMappings(stringValueNumericMappings);
 		config.setNumericMapperClass(numericMapperClass);
 		config.setStringMapperClass(stringMapperClass);
 		return config;
@@ -91,9 +93,14 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		return this;
 	}
 	
+	public RowMapperEnumFieldConfigBuilder stringValueNumericMappings(Map<String, Integer> stringValueNumericMappings) {
+		this.stringValueNumericMappings = stringValueNumericMappings;
+		return this;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public RowMapperEnumFieldConfigBuilder numericMapperClass(Class<? extends NumericEnumMapper> numericMapperClass) {
-		if (numericMapperClass.equals(NumericEnumMapper.class) == false) {
+		if (numericMapperClass != null && numericMapperClass.equals(NumericEnumMapper.class) == false) {
 			this.numericMapperClass = numericMapperClass;
 		}	
 		return this;
@@ -101,7 +108,7 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 	
 	@SuppressWarnings("rawtypes")
 	public RowMapperEnumFieldConfigBuilder stringMapperClass(Class<? extends StringEnumMapper> stringMapperClass) {
-		if (stringMapperClass.equals(StringEnumMapper.class) == false) {
+		if (stringMapperClass != null && stringMapperClass.equals(StringEnumMapper.class) == false) {
 			this.stringMapperClass = stringMapperClass;
 		}	
 		return this;
