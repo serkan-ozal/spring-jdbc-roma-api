@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-package org.springframework.jdbc.roma.api;
+package org.springframework.jdbc.roma.api.config.provider.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author Serkan ÖZAL
  */
-public interface RowMapperObjectFieldDataProvider<T> {
-
-	public Object provideData(T ownerObj);
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RowMapperIgnoreField {
 	
 }

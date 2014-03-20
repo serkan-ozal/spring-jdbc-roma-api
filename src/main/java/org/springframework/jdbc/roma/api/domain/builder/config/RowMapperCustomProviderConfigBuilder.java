@@ -18,9 +18,9 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
-import org.springframework.jdbc.roma.api.RowMapperObjectFieldDataProvider;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
+import org.springframework.jdbc.roma.api.processor.RowMapperObjectFieldProcessor;
 
 /**
  * @author Serkan ÖZAL
@@ -29,13 +29,13 @@ public class RowMapperCustomProviderConfigBuilder implements Builder<RowMapperCu
 
 	private Field field;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperObjectFieldDataProvider> dataProviderClass;
+	private Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessorClass;
 	
 	@Override
 	public RowMapperCustomProviderConfig build() {
 		RowMapperCustomProviderConfig config = new RowMapperCustomProviderConfig();
 		config.setField(field);
-		config.setDataProviderClass(dataProviderClass);
+		config.setObjectFieldProcessorClass(objectFieldProcessorClass);
 		return config;
 	}
 	
@@ -45,8 +45,9 @@ public class RowMapperCustomProviderConfigBuilder implements Builder<RowMapperCu
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public RowMapperCustomProviderConfigBuilder dataProviderClass(Class<? extends RowMapperObjectFieldDataProvider> dataProviderClass) {
-		this.dataProviderClass = dataProviderClass;
+	public RowMapperCustomProviderConfigBuilder objectFieldProcessorClass(
+			Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessorClass) {
+		this.objectFieldProcessorClass = objectFieldProcessorClass;
 		return this;
 	}
 

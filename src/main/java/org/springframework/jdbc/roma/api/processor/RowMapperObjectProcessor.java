@@ -23,6 +23,6 @@ import java.sql.ResultSet;
  */
 public interface RowMapperObjectProcessor<T> {
 
-	public T processObject(T obj, ResultSet rs, int rowNum);
+	public void processObject(T obj, ResultSet rs, int rowNum);
 	
 }

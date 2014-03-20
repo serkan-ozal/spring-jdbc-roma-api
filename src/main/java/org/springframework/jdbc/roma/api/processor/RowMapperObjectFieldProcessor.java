@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-package org.springframework.jdbc.roma.api.config.provider.annotation;
+package org.springframework.jdbc.roma.api.processor;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import org.springframework.jdbc.roma.api.processor.RowMapperObjectFieldProcessor;
+import java.sql.ResultSet;
 
 /**
  * @author Serkan ÖZAL
  */
-@Target({ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperCustomProvider {
-	
-	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessor() default RowMapperObjectFieldProcessor.class;
+public interface RowMapperObjectFieldProcessor<T> {
+
+	public void processObjectField(T obj, String fieldName, ResultSet rs, int rowNum);
 	
 }

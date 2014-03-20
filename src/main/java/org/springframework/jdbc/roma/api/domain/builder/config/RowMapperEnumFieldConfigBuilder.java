@@ -31,8 +31,10 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 
 	private Field field;
 	private Map<Integer, String> constantsAndMaps;
-	private int enumStartValue;
 	private boolean useStringValue;
+	private int enumStartValue;
+	private int defaultIndex;
+	private String defaultValue;
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
 	private Map<Integer, Integer> numericValueNumericMappings;
@@ -47,8 +49,10 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		RowMapperEnumFieldConfig config = new RowMapperEnumFieldConfig();
 		config.setField(field);
 		config.setConstantsAndMaps(constantsAndMaps);
-		config.setEnumStartValue(enumStartValue);
 		config.setUseStringValue(useStringValue);
+		config.setEnumStartValue(enumStartValue);
+		config.setDefaultIndex(defaultIndex);
+		config.setDefaultValue(defaultValue);
 		config.setNumericValueStringMappings(numericValueStringMappings);
 		config.setStringValueStringMappings(stringValueStringMappings);
 		config.setNumericValueNumericMappings(numericValueNumericMappings);
@@ -68,16 +72,26 @@ public class RowMapperEnumFieldConfigBuilder implements Builder<RowMapperEnumFie
 		return this;
 	}
 	
-	public RowMapperEnumFieldConfigBuilder enumStartValue(int enumStartValue) {
-		this.enumStartValue = enumStartValue;
-		return this;
-	}
-	
 	public RowMapperEnumFieldConfigBuilder useStringValue(boolean useStringValue) {
 		this.useStringValue = useStringValue;
 		return this;
 	}
 	
+	public RowMapperEnumFieldConfigBuilder enumStartValue(int enumStartValue) {
+		this.enumStartValue = enumStartValue;
+		return this;
+	}
+	
+	public RowMapperEnumFieldConfigBuilder defaultIndex(int defaultIndex) {
+		this.defaultIndex = defaultIndex;
+		return this;
+	}
+	
+	public RowMapperEnumFieldConfigBuilder defaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+		return this;
+	}
+
 	public RowMapperEnumFieldConfigBuilder numericValueStringMappings(Map<Integer, String> numericValueStringMappings) {
 		this.numericValueStringMappings = numericValueStringMappings;
 		return this;

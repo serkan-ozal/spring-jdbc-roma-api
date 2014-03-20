@@ -16,7 +16,7 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
-import org.springframework.jdbc.roma.api.RowMapperObjectFieldDataProvider;
+import org.springframework.jdbc.roma.api.processor.RowMapperObjectFieldProcessor;
 
 /**
  * @author Serkan ÖZAL
@@ -24,16 +24,16 @@ import org.springframework.jdbc.roma.api.RowMapperObjectFieldDataProvider;
 public class RowMapperCustomProviderConfig extends BaseRowMapperFieldConfig {
 
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperObjectFieldDataProvider> dataProviderClass;
+	private Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessorClass;
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperObjectFieldDataProvider> getDataProviderClass() {
-		return dataProviderClass;
+	public Class<? extends RowMapperObjectFieldProcessor> getObjectFieldProcessorClass() {
+		return objectFieldProcessorClass;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void setDataProviderClass(Class<? extends RowMapperObjectFieldDataProvider> dataProviderClass) {
-		this.dataProviderClass = dataProviderClass;
+	public void setObjectFieldProcessorClass(Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessorClass) {
+		this.objectFieldProcessorClass = objectFieldProcessorClass;
 	}
 
 }

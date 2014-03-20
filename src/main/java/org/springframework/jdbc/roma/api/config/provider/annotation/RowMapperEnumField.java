@@ -35,6 +35,9 @@ public @interface RowMapperEnumField {
 	
 	public boolean useStringValue() default false;
 	
+	public int defaultIndex() default -1;
+	public String defaultValue() default "";
+	
 	public RowMapperEnumAutoMapper mapViaAutoMapper() 
 				default @RowMapperEnumAutoMapper;
 	public RowMapperEnumNumericMapper mapViaNumericMapper() 

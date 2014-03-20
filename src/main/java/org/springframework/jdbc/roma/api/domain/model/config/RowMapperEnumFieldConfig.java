@@ -29,6 +29,8 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 	private Map<Integer, String> constantsAndMaps;
 	private boolean useStringValue;
 	private int enumStartValue;
+	private int defaultIndex;
+	private String defaultValue;
 	private Map<Integer, String> numericValueStringMappings;
 	private Map<String, String> stringValueStringMappings;
 	private Map<Integer, Integer> numericValueNumericMappings;
@@ -60,6 +62,22 @@ public class RowMapperEnumFieldConfig extends BaseRowMapperFieldConfig {
 
 	public void setEnumStartValue(int enumStartValue) {
 		this.enumStartValue = enumStartValue;
+	}
+	
+	public int getDefaultIndex() {
+		return defaultIndex;
+	}
+	
+	public void setDefaultIndex(int defaultIndex) {
+		this.defaultIndex = defaultIndex;
+	}
+	
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+	
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
 	}
 
 	public Map<Integer, String> getNumericValueStringMappings() {
