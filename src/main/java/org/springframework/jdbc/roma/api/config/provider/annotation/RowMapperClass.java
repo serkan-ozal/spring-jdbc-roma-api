@@ -20,12 +20,10 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Field;
+import java.sql.ResultSet;
 
-import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
-import org.springframework.jdbc.roma.api.processor.RowMapperObjectProcessor;
-import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
-import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
 /**
  * @author Serkan ÖZAL
@@ -40,10 +38,34 @@ public @interface RowMapperClass {
 	public Class<? extends RowMapperObjectCreater> objectCreater() default RowMapperObjectCreater.class;
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperObjectProcessor> objectProcessor() default RowMapperObjectProcessor.class;
-	public Class<? extends ColumnNameResolver> columnNameResolver() default ColumnNameResolver.class;
-	public Class<? extends TableNameResolver> tableNameResolver() default TableNameResolver.class;
+	public Class<? extends RowMapperColumnNameResolver> columnNameResolver() default RowMapperColumnNameResolver.class;
+	public Class<? extends RowMapperTableNameResolver> tableNameResolver() default RowMapperTableNameResolver.class;
 	public String dataSourceName() default "";
 	public String schemaName() default "";
 	public String tableName() default "";
+	
+	public interface RowMapperObjectProcessor<T> {
+
+		public void processObject(T obj, ResultSet rs, int rowNum);
+		
+	}
+	
+	public interface RowMapperObjectCreater<T> {
+
+		public T createObject(Class<T> clazz);
+		
+	}
+	
+	public interface RowMapperColumnNameResolver {
+
+		public String resolveColumnName(Field f);
+		
+	}
+
+	public interface RowMapperTableNameResolver {
+
+		public String resolveTableName(Class<?> clazz);
+		
+	}
 	
 }

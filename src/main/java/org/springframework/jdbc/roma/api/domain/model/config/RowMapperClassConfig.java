@@ -16,11 +16,11 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
-import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperColumnNameResolver;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectCreater;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectProcessor;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperTableNameResolver;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
-import org.springframework.jdbc.roma.api.processor.RowMapperObjectProcessor;
-import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
-import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
 /**
  * @author Serkan ÖZAL
@@ -33,8 +33,8 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperObjectProcessor> objectProcessorClass;
-	private Class<? extends ColumnNameResolver> columnNameResolverClass;
-	private Class<? extends TableNameResolver> tableNameResolverClass;
+	private Class<? extends RowMapperColumnNameResolver> columnNameResolverClass;
+	private Class<? extends RowMapperTableNameResolver> tableNameResolverClass;
 	private String dataSourceName;
 	private String schemaName;
 	private String tableName;
@@ -69,19 +69,19 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 		this.objectProcessorClass = objectProcessorClass;
 	}
 	
-	public Class<? extends ColumnNameResolver> getColumnNameResolverClass() {
+	public Class<? extends RowMapperColumnNameResolver> getColumnNameResolverClass() {
 		return columnNameResolverClass;
 	}
 	
-	public void setColumnNameResolverClass(Class<? extends ColumnNameResolver> columnNameResolverClass) {
+	public void setColumnNameResolverClass(Class<? extends RowMapperColumnNameResolver> columnNameResolverClass) {
 		this.columnNameResolverClass = columnNameResolverClass;
 	}
 	
-	public Class<? extends TableNameResolver> getTableNameResolverClass() {
+	public Class<? extends RowMapperTableNameResolver> getTableNameResolverClass() {
 		return tableNameResolverClass;
 	}
 	
-	public void setTableNameResolverClass(Class<? extends TableNameResolver> tableNameResolverClass) {
+	public void setTableNameResolverClass(Class<? extends RowMapperTableNameResolver> tableNameResolverClass) {
 		this.tableNameResolverClass = tableNameResolverClass;
 	}
 	

@@ -49,7 +49,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumNumericValueNumericMapping {
+	public @interface RowMapperEnumNumericValueNumericMapping {
 		
 		public int value();
 		public int mappingIndex();
@@ -58,7 +58,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumNumericValueStringMapping {
+	public @interface RowMapperEnumNumericValueStringMapping {
 		
 		public int value();
 		public String mappingValue();
@@ -67,7 +67,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumStringValueNumericMapping {
+	public @interface RowMapperEnumStringValueNumericMapping {
 		
 		public String value();
 		public int mappingIndex();
@@ -76,7 +76,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumStringValueStringMapping {
+	public @interface RowMapperEnumStringValueStringMapping {
 		
 		public String value();
 		public String mappingValue();
@@ -85,7 +85,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumAutoMapper {
+	public @interface RowMapperEnumAutoMapper {
 		
 		public RowMapperEnumNumericValueNumericMapping[] mapViaNumericValueNumericMappings() default {};
 		public RowMapperEnumNumericValueStringMapping[] mapViaNumericValueStringMappings() default {};
@@ -96,7 +96,7 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumNumericMapper {
+	public @interface RowMapperEnumNumericMapper {
 		
 		@SuppressWarnings("rawtypes")
 		public Class<? extends NumericEnumMapper> mapper();
@@ -105,27 +105,27 @@ public @interface RowMapperEnumField {
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	@interface RowMapperEnumStringMapper {
+	public @interface RowMapperEnumStringMapper {
 		
 		@SuppressWarnings("rawtypes")
 		public Class<? extends StringEnumMapper> mapper();
 		
 	}
 	
-	interface EnumMapper<E extends Enum<?>, T> {
+	public interface EnumMapper<E extends Enum<?>, T> {
 		
 		E map(T value);
 		
 	}
 	
-	interface NumericEnumMapper<E extends Enum<?>> extends EnumMapper<E, Integer> {
+	public interface NumericEnumMapper<E extends Enum<?>> extends EnumMapper<E, Integer> {
 		
 		@Override
 		E map(Integer value);
 		
 	}
 	
-	interface StringEnumMapper<E extends Enum<?>> extends EnumMapper<E, String> {
+	public interface StringEnumMapper<E extends Enum<?>> extends EnumMapper<E, String> {
 		
 		@Override
 		E map(String value);

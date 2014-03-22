@@ -36,4 +36,6 @@ public @interface RowMapperObjectField {
 	public Class<?> fieldType() default Object.class;
 	public boolean lazy() default false;
 	
+	public RowMapperLazyCondition lazyCondition() default @RowMapperLazyCondition;
+	
 }

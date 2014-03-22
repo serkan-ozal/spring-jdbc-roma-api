@@ -18,9 +18,9 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperCustomProvider.RowMapperObjectFieldProcessor;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
-import org.springframework.jdbc.roma.api.processor.RowMapperObjectFieldProcessor;
 
 /**
  * @author Serkan ÖZAL

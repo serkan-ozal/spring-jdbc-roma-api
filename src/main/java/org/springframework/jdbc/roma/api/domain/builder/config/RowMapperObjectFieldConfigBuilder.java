@@ -21,6 +21,7 @@ import java.lang.reflect.Field;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperImplementationProviderConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyConditionConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSpringProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
@@ -37,6 +38,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private Class<?> fieldType;
 	private boolean lazy = false;
+	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
 	
 	@Override
 	public RowMapperObjectFieldConfig build() {
@@ -48,6 +50,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
 		config.setFieldType(fieldType);
 		config.setLazy(lazy);
+		config.setRowMapperLazyConditionConfig(rowMapperLazyConditionConfig);
 		return config;
 	}
 	
@@ -87,6 +90,12 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	
 	public RowMapperObjectFieldConfigBuilder lazy(boolean lazy) {
 		this.lazy = lazy;
+		return this;
+	}
+	
+	public RowMapperObjectFieldConfigBuilder rowMapperLazyConditionConfig(
+			RowMapperLazyConditionConfig rowMapperLazyConditionConfig) {
+		this.rowMapperLazyConditionConfig = rowMapperLazyConditionConfig;	
 		return this;
 	}
 

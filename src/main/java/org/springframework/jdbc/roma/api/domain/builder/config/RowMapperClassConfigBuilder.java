@@ -16,13 +16,13 @@
 
 package org.springframework.jdbc.roma.api.domain.builder.config;
 
-import org.springframework.jdbc.roma.api.creater.RowMapperObjectCreater;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperColumnNameResolver;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectCreater;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectProcessor;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperTableNameResolver;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
 import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
-import org.springframework.jdbc.roma.api.processor.RowMapperObjectProcessor;
-import org.springframework.jdbc.roma.api.resolver.ColumnNameResolver;
-import org.springframework.jdbc.roma.api.resolver.TableNameResolver;
 
 /**
  * @author Serkan ÖZAL
@@ -36,8 +36,8 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperObjectProcessor> objectProcessorClass;
-	private Class<? extends ColumnNameResolver> columnNameResolverClass;
-	private Class<? extends TableNameResolver> tableNameResolverClass;
+	private Class<? extends RowMapperColumnNameResolver> columnNameResolverClass;
+	private Class<? extends RowMapperTableNameResolver> tableNameResolverClass;
 	private String dataSourceName;
 	private String schemaName;
 	private String tableName;
@@ -86,15 +86,15 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 		return this;
 	}
 	
-	public RowMapperClassConfigBuilder columnNameResolverClass(Class<? extends ColumnNameResolver> columnNameResolverClass) {
-		if (columnNameResolverClass != null && columnNameResolverClass.equals(ColumnNameResolver.class) == false) {
+	public RowMapperClassConfigBuilder columnNameResolverClass(Class<? extends RowMapperColumnNameResolver> columnNameResolverClass) {
+		if (columnNameResolverClass != null && columnNameResolverClass.equals(RowMapperColumnNameResolver.class) == false) {
 			this.columnNameResolverClass = columnNameResolverClass;
 		}	
 		return this;
 	}
 	
-	public RowMapperClassConfigBuilder tableNameResolverClass(Class<? extends TableNameResolver> tableNameResolverClass) {
-		if (tableNameResolverClass != null && tableNameResolverClass.equals(TableNameResolver.class) == false) {
+	public RowMapperClassConfigBuilder tableNameResolverClass(Class<? extends RowMapperTableNameResolver> tableNameResolverClass) {
+		if (tableNameResolverClass != null && tableNameResolverClass.equals(RowMapperTableNameResolver.class) == false) {
 			this.tableNameResolverClass = tableNameResolverClass;
 		}	
 		return this;
