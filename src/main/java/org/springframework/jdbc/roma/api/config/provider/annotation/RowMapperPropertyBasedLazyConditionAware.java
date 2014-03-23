@@ -24,12 +24,12 @@ import java.lang.annotation.Target;
 /**
  * @author Serkan ÖZAL
  */
-@Target({ElementType.ANNOTATION_TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperSqlProvider {
+public @interface RowMapperPropertyBasedLazyConditionAware {
 	
-	public String provideSql() default "";
-	public String dataSourceName() default "";
-	public Class<?> entityType() default Object.class;
+	public String propertyName();
+	public boolean enableOnStart() default true;
+	public boolean disableOnFinish() default true;
 	
 }

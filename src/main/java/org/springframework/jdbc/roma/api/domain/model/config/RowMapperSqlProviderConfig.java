@@ -23,6 +23,7 @@ public class RowMapperSqlProviderConfig extends BaseRowMapperFieldConfig {
 
 	private String provideSql;
 	private String dataSourceName;
+	private Class<?> entityType;
 	
 	public String getProvideSql() {
 		return provideSql;
@@ -38,6 +39,14 @@ public class RowMapperSqlProviderConfig extends BaseRowMapperFieldConfig {
 	
 	public void setDataSourceName(String dataSourceName) {
 		this.dataSourceName = dataSourceName;
+	}
+	
+	public Class<?> getEntityType() {
+		return entityType;
+	}
+	
+	public void setEntityType(Class<?> entityType) {
+		this.entityType = entityType;
 	}
 
 }

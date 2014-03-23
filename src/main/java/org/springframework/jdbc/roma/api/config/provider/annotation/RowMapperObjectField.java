@@ -32,6 +32,7 @@ public @interface RowMapperObjectField {
 	public RowMapperSqlProvider provideViaSqlProvider() default @RowMapperSqlProvider;
 	public RowMapperImplementationProvider provideViaImplementationProvider() default @RowMapperImplementationProvider;
 	public RowMapperCustomProvider provideViaCustomProvider() default @RowMapperCustomProvider;
+	public RowMapperExpressionProvider provideViaExpressionProvider() default @RowMapperExpressionProvider;
 	
 	public Class<?> fieldType() default Object.class;
 	public boolean lazy() default false;

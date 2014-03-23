@@ -25,6 +25,7 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
 	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
+	private RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig;
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
@@ -59,6 +60,14 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 
 	public void setRowMapperCustomProviderConfig(RowMapperCustomProviderConfig rowMapperCustomProviderConfig) {
 		this.rowMapperCustomProviderConfig = rowMapperCustomProviderConfig;
+	}
+	
+	public RowMapperExpressionProviderConfig getRowMapperExpressionProviderConfig() {
+		return rowMapperExpressionProviderConfig;
+	}
+	
+	public void setRowMapperExpressionProviderConfig(RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
+		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;
 	}
 
 	public Class<?> getFieldType() {

@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperExpressionProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperImplementationProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyConditionConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
@@ -36,6 +37,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
 	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
+	private RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig;
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
@@ -48,6 +50,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		config.setRowMapperSqlProviderConfig(rowMapperSqlProviderConfig);
 		config.setRowMapperImplementationProviderConfig(rowMapperImplementationProviderConfig);
 		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
+		config.setRowMapperExpressionProviderConfig(rowMapperExpressionProviderConfig);
 		config.setFieldType(fieldType);
 		config.setLazy(lazy);
 		config.setRowMapperLazyConditionConfig(rowMapperLazyConditionConfig);
@@ -74,6 +77,12 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	public RowMapperObjectFieldConfigBuilder rowMapperImplementationProviderConfig(
 			RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig) {
 		this.rowMapperImplementationProviderConfig = rowMapperImplementationProviderConfig;
+		return this;
+	}
+	
+	public RowMapperObjectFieldConfigBuilder rowMapperExpressionProviderConfig(
+			RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
+		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;	
 		return this;
 	}
 	

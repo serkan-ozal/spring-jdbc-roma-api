@@ -16,6 +16,13 @@
 
 package org.springframework.jdbc.roma.api.config;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Serkan ÖZAL
  */
@@ -23,6 +30,12 @@ public class DefaultConfigs {
 
 	private String defaultDataSourceName = "dataSource";
 	private String defaultSchemaName = null;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends List> defaultListImplementationClass = ArrayList.class;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends Set> defaultSetImplementationClass = HashSet.class;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends Map> defaultMapImplementationClass = HashMap.class;
 	
 	public String getDefaultDataSourceName() {
 		return defaultDataSourceName;
@@ -40,4 +53,34 @@ public class DefaultConfigs {
 		this.defaultSchemaName = defaultSchemaName;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public Class<? extends List> getDefaultListImplementationClass() {
+		return defaultListImplementationClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setDefaultListImplementationClass(Class<? extends List> defaultListImplementationClass) {
+		this.defaultListImplementationClass = defaultListImplementationClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Class<? extends Set> getDefaultSetImplementationClass() {
+		return defaultSetImplementationClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setDefaultSetImplementationClass(Class<? extends Set> defaultSetImplementationClass) {
+		this.defaultSetImplementationClass = defaultSetImplementationClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Class<? extends Map> getDefaultMapImplementationClass() {
+		return defaultMapImplementationClass;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setDefaultMapImplementationClass(Class<? extends Map> defaultMapImplementationClass) {
+		this.defaultMapImplementationClass = defaultMapImplementationClass;
+	}
+	
 }

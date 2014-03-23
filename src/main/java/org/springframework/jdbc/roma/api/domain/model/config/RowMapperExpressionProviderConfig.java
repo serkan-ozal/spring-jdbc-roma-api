@@ -14,22 +14,30 @@
  * limitations under the License.
  */
 
-package org.springframework.jdbc.roma.api.config.provider.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package org.springframework.jdbc.roma.api.domain.model.config;
 
 /**
  * @author Serkan ÖZAL
  */
-@Target({ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperSqlProvider {
+public class RowMapperExpressionProviderConfig extends BaseRowMapperFieldConfig {
+
+	private String expression;
+	private Class<?>[] usedClasses;
 	
-	public String provideSql() default "";
-	public String dataSourceName() default "";
-	public Class<?> entityType() default Object.class;
+	public String getExpression() {
+		return expression;
+	}
 	
+	public void setExpression(String expression) {
+		this.expression = expression;
+	}
+	
+	public Class<?>[] getUsedClasses() {
+		return usedClasses;
+	}
+	
+	public void setUsedClasses(Class<?>[] usedClasses) {
+		this.usedClasses = usedClasses;
+	}
+
 }

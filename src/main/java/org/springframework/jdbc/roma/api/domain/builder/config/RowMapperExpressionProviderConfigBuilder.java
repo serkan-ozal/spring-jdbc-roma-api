@@ -19,45 +19,38 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 import java.lang.reflect.Field;
 
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperExpressionProviderConfig;
 
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperSqlProviderConfigBuilder implements Builder<RowMapperSqlProviderConfig> {
+public class RowMapperExpressionProviderConfigBuilder implements Builder<RowMapperExpressionProviderConfig> {
 
 	private Field field;
-	private String provideSql;
-	private String dataSourceName;
-	private Class<?> entityType;
+	private String expression;
+	private Class<?>[] usedClasses;
 	
 	@Override
-	public RowMapperSqlProviderConfig build() {
-		RowMapperSqlProviderConfig config = new RowMapperSqlProviderConfig();
+	public RowMapperExpressionProviderConfig build() {
+		RowMapperExpressionProviderConfig config = new RowMapperExpressionProviderConfig();
 		config.setField(field);
-		config.setProvideSql(provideSql);
-		config.setDataSourceName(dataSourceName);
-		config.setEntityType(entityType);
+		config.setExpression(expression);
+		config.setUsedClasses(usedClasses);
 		return config;
 	}
 	
-	public RowMapperSqlProviderConfigBuilder field(Field field) {
+	public RowMapperExpressionProviderConfigBuilder field(Field field) {
 		this.field = field;
 		return this;
 	}
 	
-	public RowMapperSqlProviderConfigBuilder provideSql(String provideSql) {
-		this.provideSql = provideSql;
+	public RowMapperExpressionProviderConfigBuilder expression(String expression) {
+		this.expression = expression;
 		return this;
 	}
 	
-	public RowMapperSqlProviderConfigBuilder dataSourceName(String dataSourceName) {
-		this.dataSourceName = dataSourceName;
-		return this;
-	}
-	
-	public RowMapperSqlProviderConfigBuilder entityType(Class<?> entityType) {
-		this.entityType = entityType;
+	public RowMapperExpressionProviderConfigBuilder usedClasses(Class<?>[] usedClasses) {
+		this.usedClasses = usedClasses;
 		return this;
 	}
 	

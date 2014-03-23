@@ -26,10 +26,9 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperSqlProvider {
+public @interface RowMapperExpressionProvider {
 	
-	public String provideSql() default "";
-	public String dataSourceName() default "";
-	public Class<?> entityType() default Object.class;
+	public String expression() default "";
+	public Class<?>[] usedClasses() default {};
 	
 }
