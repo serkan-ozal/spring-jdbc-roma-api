@@ -28,8 +28,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RowMapperPropertyBasedLazyConditionAware {
 	
+	public static final int ENABLE_ON_START = 1;
+	public static final int DISABLE_ON_START = 2;
+	public static final int ENABLE_ON_FINISH = 4;
+	public static final int DISABLE_ON_FINISH = 8;
+	public static final int DEFAULT_OPTIONS = ENABLE_ON_START | DISABLE_ON_FINISH;
+	
 	public String propertyName();
-	public boolean enableOnStart() default true;
-	public boolean disableOnFinish() default true;
+	public int options() default DEFAULT_OPTIONS;
 	
 }
