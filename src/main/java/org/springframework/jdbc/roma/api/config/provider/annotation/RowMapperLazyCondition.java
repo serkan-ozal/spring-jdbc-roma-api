@@ -29,13 +29,13 @@ import java.sql.ResultSet;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RowMapperLazyCondition {
 	
-	public PropertyBasedLazyConditionProvider provideViaPropertyBasedProvider() default @PropertyBasedLazyConditionProvider;
-	public ExpressionBasedLazyConditionProvider provideViaExpressionBasedProvider() default @ExpressionBasedLazyConditionProvider;
-	public CustomLazyConditionProvider provideViaCustomProvider() default @CustomLazyConditionProvider;
+	public RowMapperPropertyBasedLazyConditionProvider provideViaPropertyBasedProvider() default @RowMapperPropertyBasedLazyConditionProvider;
+	public RowMapperExpressionBasedLazyConditionProvider provideViaExpressionBasedProvider() default @RowMapperExpressionBasedLazyConditionProvider;
+	public RowMapperCustomLazyConditionProvider provideViaCustomProvider() default @RowMapperCustomLazyConditionProvider;
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface PropertyBasedLazyConditionProvider {
+	public @interface RowMapperPropertyBasedLazyConditionProvider {
 	 	
 		public String propertyName() default "";
 		
@@ -43,7 +43,7 @@ public @interface RowMapperLazyCondition {
 	 
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface ExpressionBasedLazyConditionProvider {
+	public @interface RowMapperExpressionBasedLazyConditionProvider {
 	 	
 		public String expression() default "";
 		
@@ -51,7 +51,7 @@ public @interface RowMapperLazyCondition {
 	 
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface CustomLazyConditionProvider {
+	public @interface RowMapperCustomLazyConditionProvider {
 	 	
 		@SuppressWarnings("rawtypes")
 		public Class<? extends RowMapperLazyConditionProvider> lazyConditionProvider() default RowMapperLazyConditionProvider.class;
