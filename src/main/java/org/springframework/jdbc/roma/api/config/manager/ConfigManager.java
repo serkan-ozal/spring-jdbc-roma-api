@@ -27,7 +27,7 @@ import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClobFieldC
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperEnumFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperTimestampFieldConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperTimeFieldConfig;
 
 /**
  * @author Serkan ÖZAL
@@ -45,7 +45,7 @@ public interface ConfigManager {
 	public RowMapperEnumFieldConfig getRowMapperEnumFieldConfig(Class<?> clazz, String fieldName);
 	public RowMapperClobFieldConfig getRowMapperClobFieldConfig(Class<?> clazz, String fieldName);
 	public RowMapperBlobFieldConfig getRowMapperBlobFieldConfig(Class<?> clazz, String fieldName);
-	public RowMapperTimestampFieldConfig getRowMapperTimestampFieldConfig(Class<?> clazz, String fieldName);
+	public RowMapperTimeFieldConfig getRowMapperTimeFieldConfig(Class<?> clazz, String fieldName);
 	public RowMapperClassConfig getRowMapperClassConfig(Class<?> clazz);
 	
 	public RowMapperFieldConfig getRowMapperFieldConfig(Field field);
@@ -53,6 +53,6 @@ public interface ConfigManager {
 	public RowMapperEnumFieldConfig getRowMapperEnumFieldConfig(Field field);
 	public RowMapperClobFieldConfig getRowMapperClobFieldConfig(Field field);
 	public RowMapperBlobFieldConfig getRowMapperBlobFieldConfig(Field field);
-	public RowMapperTimestampFieldConfig getRowMapperTimestampFieldConfig(Field field);
+	public RowMapperTimeFieldConfig getRowMapperTimeFieldConfig(Field field);
 	
 }

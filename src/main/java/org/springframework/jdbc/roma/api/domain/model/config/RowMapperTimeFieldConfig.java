@@ -19,6 +19,16 @@ package org.springframework.jdbc.roma.api.domain.model.config;
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperTimestampFieldConfig extends BaseRowMapperFieldConfig {
+public class RowMapperTimeFieldConfig extends BaseRowMapperFieldConfig {
+	
+	boolean asTimestamp;
+	
+	public boolean isAsTimestamp() {
+		return asTimestamp;
+	}
+	
+	public void setAsTimestamp(boolean asTimestamp) {
+		this.asTimestamp = asTimestamp;
+	}
 	
 }

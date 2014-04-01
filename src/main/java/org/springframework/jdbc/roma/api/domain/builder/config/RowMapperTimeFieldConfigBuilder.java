@@ -19,24 +19,31 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 import java.lang.reflect.Field;
 
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperTimestampFieldConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperTimeFieldConfig;
 
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperTimestampFieldConfigBuilder implements Builder<RowMapperTimestampFieldConfig> {
+public class RowMapperTimeFieldConfigBuilder implements Builder<RowMapperTimeFieldConfig> {
 
 	private Field field;
+	private boolean asTimestamp;
 	
 	@Override
-	public RowMapperTimestampFieldConfig build() {
-		RowMapperTimestampFieldConfig config = new RowMapperTimestampFieldConfig();
+	public RowMapperTimeFieldConfig build() {
+		RowMapperTimeFieldConfig config = new RowMapperTimeFieldConfig();
 		config.setField(field);
+		config.setAsTimestamp(asTimestamp);
 		return config;
 	}
 	
-	public RowMapperTimestampFieldConfigBuilder field(Field field) {
+	public RowMapperTimeFieldConfigBuilder field(Field field) {
 		this.field = field;
+		return this;
+	}
+	
+	public RowMapperTimeFieldConfigBuilder asTimestamp(boolean asTimestamp) {
+		this.asTimestamp = asTimestamp;
 		return this;
 	}
 	
