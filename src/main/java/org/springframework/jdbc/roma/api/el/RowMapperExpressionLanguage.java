@@ -24,21 +24,21 @@ import java.util.regex.Pattern;
 public interface RowMapperExpressionLanguage {
 
 	public static final String BEAN_SIGN = "@";
-	public static final String PARAMETER_SIGN = "$";
+	public static final String PROPERTY_SIGN = "$";
 	public static final String RESULT_SET_SIGN = "&";
 	public static final String ATTRIBUTE_SIGN = "#";
 	
 	public static final String BEAN_PATTERN_EXPRESSION = "@\\{([^\\{]+)\\}";
-	public static final String PARAMETER_PATTERN_EXPRESSION = "\\$\\{([^\\{]+)\\}";
+	public static final String PROPERTY_PATTERN_EXPRESSION = "\\$\\{([^\\{]+)\\}";
 	public static final String RESULT_SET_PATTERN_EXPRESSION = "&\\{\\[([^\\[]+)\\]([^\\{]+)\\}";
 	public static final String ATTRIBUTE_EXPRESSION = "\\#\\{([^\\{]+)\\}";
-	public static final String PARAMETER_OR_RESULT_SET_PATTERN_EXPRESSION = 
-			PARAMETER_PATTERN_EXPRESSION + "|" + RESULT_SET_PATTERN_EXPRESSION;
+	public static final String PROPERTY_OR_RESULT_SET_PATTERN_EXPRESSION = 
+			PROPERTY_PATTERN_EXPRESSION + "|" + RESULT_SET_PATTERN_EXPRESSION;
 	
 	public static final Pattern BEAN_PATTERN = Pattern.compile(BEAN_PATTERN_EXPRESSION);
-	public static final Pattern PARAMETER_PATTERN = Pattern.compile(PARAMETER_PATTERN_EXPRESSION);
+	public static final Pattern PROPERTY_PATTERN = Pattern.compile(PROPERTY_PATTERN_EXPRESSION);
 	public static final Pattern RESULT_SET_PATTERN = Pattern.compile(RESULT_SET_PATTERN_EXPRESSION);
 	public static final Pattern ATTRIBUTE_PATTERN = Pattern.compile(ATTRIBUTE_EXPRESSION);
-	public static final Pattern PARAMETER_OR_RESULT_SET_PATTERN = Pattern.compile(PARAMETER_OR_RESULT_SET_PATTERN_EXPRESSION);
+	public static final Pattern PROPERTY_OR_RESULT_SET_PATTERN = Pattern.compile(PROPERTY_OR_RESULT_SET_PATTERN_EXPRESSION);
 	
 }
