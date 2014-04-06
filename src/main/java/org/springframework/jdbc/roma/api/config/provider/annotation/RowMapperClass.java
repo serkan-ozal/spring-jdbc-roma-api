@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 
-import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.factory.RowMapperFieldGeneratorFactory;
 
 /**
  * @author Serkan ÖZAL
@@ -32,17 +32,18 @@ import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RowMapperClass {
 	
+	public String dataSourceName() default "";
+	public String schemaName() default "";
+	public String tableName() default "";
+	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperGeneratorFactory> generatorFactory() default RowMapperGeneratorFactory.class;
+	public Class<? extends RowMapperFieldGeneratorFactory> fieldGeneratorFactory() default RowMapperFieldGeneratorFactory.class;
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperObjectCreater> objectCreater() default RowMapperObjectCreater.class;
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperObjectProcessor> objectProcessor() default RowMapperObjectProcessor.class;
 	public Class<? extends RowMapperColumnNameResolver> columnNameResolver() default RowMapperColumnNameResolver.class;
 	public Class<? extends RowMapperTableNameResolver> tableNameResolver() default RowMapperTableNameResolver.class;
-	public String dataSourceName() default "";
-	public String schemaName() default "";
-	public String tableName() default "";
 	
 	public interface RowMapperObjectProcessor<T> {
 

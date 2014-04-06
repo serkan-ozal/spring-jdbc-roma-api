@@ -23,7 +23,7 @@ import org.springframework.jdbc.roma.api.generator.RowMapperFieldGenerator;
 /**
  * @author Serkan ÖZAL
  */
-public interface RowMapperGeneratorFactory<T> {
+public interface RowMapperFieldGeneratorFactory<T> {
 
 	public RowMapperFieldGenerator<T> createRowMapperFieldGenerator(Field f);
 	

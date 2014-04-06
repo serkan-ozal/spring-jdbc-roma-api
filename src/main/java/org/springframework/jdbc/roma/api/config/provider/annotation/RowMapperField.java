@@ -20,6 +20,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.sql.ResultSet;
 
 import org.springframework.jdbc.roma.api.generator.RowMapperFieldGenerator;
 
@@ -30,8 +31,18 @@ import org.springframework.jdbc.roma.api.generator.RowMapperFieldGenerator;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RowMapperField {
 	
-	public String columnName();
+	public String columnName() default "";
+	
 	@SuppressWarnings("rawtypes")
 	public Class<? extends RowMapperFieldGenerator> fieldGenerator() default RowMapperFieldGenerator.class;
+	
+	@SuppressWarnings("rawtypes")
+	public Class<? extends RowMapperFieldMapper> fieldMapper() default RowMapperFieldMapper.class;
+	
+	public interface RowMapperFieldMapper<T> {
+
+		public void mapField(T obj, String fieldName, ResultSet rs, int rowNum);
+		
+	}
 	
 }

@@ -22,7 +22,7 @@ import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperCla
 import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperTableNameResolver;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperClassConfig;
-import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.factory.RowMapperFieldGeneratorFactory;
 
 /**
  * @author Serkan ÖZAL
@@ -31,7 +31,7 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 
 	private Class<?> clazz;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	private Class<? extends RowMapperFieldGeneratorFactory> fieldGeneratorFactoryClass;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	@SuppressWarnings("rawtypes")
@@ -46,7 +46,7 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	public RowMapperClassConfig build() {
 		RowMapperClassConfig config = new RowMapperClassConfig();
 		config.setClazz(clazz);
-		config.setGeneratorFactoryClass(generatorFactoryClass);
+		config.setFieldGeneratorFactoryClass(fieldGeneratorFactoryClass);
 		config.setObjectCreaterClass(objectCreaterClass);
 		config.setObjectProcessorClass(objectProcessorClass);
 		config.setColumnNameResolverClass(columnNameResolverClass);
@@ -63,9 +63,9 @@ public class RowMapperClassConfigBuilder implements Builder<RowMapperClassConfig
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public RowMapperClassConfigBuilder generatorFactoryClass(Class<? extends RowMapperGeneratorFactory> generatorFactoryClass) {
-		if (generatorFactoryClass != null && generatorFactoryClass.equals(RowMapperGeneratorFactory.class) == false) {
-			this.generatorFactoryClass = generatorFactoryClass;
+	public RowMapperClassConfigBuilder fieldGeneratorFactoryClass(Class<? extends RowMapperFieldGeneratorFactory> fieldGeneratorFactoryClass) {
+		if (fieldGeneratorFactoryClass != null && fieldGeneratorFactoryClass.equals(RowMapperFieldGeneratorFactory.class) == false) {
+			this.fieldGeneratorFactoryClass = fieldGeneratorFactoryClass;
 		}	
 		return this;
 	}

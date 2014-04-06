@@ -18,6 +18,7 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperField.RowMapperFieldMapper;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperFieldConfig;
 import org.springframework.jdbc.roma.api.generator.RowMapperFieldGenerator;
@@ -31,14 +32,16 @@ public class RowMapperFieldConfigBuilder implements Builder<RowMapperFieldConfig
 	private String columnName;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperFieldGenerator> fieldGeneratorClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperFieldMapper> fieldMapperClass;
 	
-	@SuppressWarnings({ "rawtypes" })
 	@Override
 	public RowMapperFieldConfig build() {
 		RowMapperFieldConfig config = new RowMapperFieldConfig();
 		config.setField(field);
 		config.setColumnName(columnName);
-		config.setFieldGeneratorClass((Class<? extends RowMapperFieldGenerator>) fieldGeneratorClass);
+		config.setFieldGeneratorClass(fieldGeneratorClass);
+		config.setFieldMapperClass(fieldMapperClass);
 		return config;
 	}
 	
@@ -56,6 +59,14 @@ public class RowMapperFieldConfigBuilder implements Builder<RowMapperFieldConfig
 	public RowMapperFieldConfigBuilder fieldGeneratorClass(Class<? extends RowMapperFieldGenerator> fieldGeneratorClass) {
 		if (fieldGeneratorClass != null && fieldGeneratorClass.equals(RowMapperFieldGenerator.class) == false) {
 			this.fieldGeneratorClass = fieldGeneratorClass;
+		}	
+		return this;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public RowMapperFieldConfigBuilder fieldMapperClass(Class<? extends RowMapperFieldMapper> fieldMapperClass) {
+		if (fieldMapperClass != null && fieldMapperClass.equals(RowMapperFieldMapper.class) == false) {
+			this.fieldMapperClass = fieldMapperClass;
 		}	
 		return this;
 	}

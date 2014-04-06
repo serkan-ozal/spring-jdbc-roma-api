@@ -16,6 +16,7 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperField.RowMapperFieldMapper;
 import org.springframework.jdbc.roma.api.generator.RowMapperFieldGenerator;
 
 /**
@@ -26,6 +27,8 @@ public class RowMapperFieldConfig extends BaseRowMapperFieldConfig {
 	private String columnName;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperFieldGenerator> fieldGeneratorClass;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperFieldMapper> fieldMapperClass;
 	
 	public String getColumnName() {
 		return columnName;
@@ -43,6 +46,16 @@ public class RowMapperFieldConfig extends BaseRowMapperFieldConfig {
 	@SuppressWarnings("rawtypes")
 	public void setFieldGeneratorClass(Class<? extends RowMapperFieldGenerator> fieldGeneratorClass) {
 		this.fieldGeneratorClass = fieldGeneratorClass;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Class<? extends RowMapperFieldMapper> getFieldMapperClass() {
+		return fieldMapperClass;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFieldMapperClass(Class<? extends RowMapperFieldMapper> fieldMapperClass) {
+		this.fieldMapperClass = fieldMapperClass;
 	}
 	
 }

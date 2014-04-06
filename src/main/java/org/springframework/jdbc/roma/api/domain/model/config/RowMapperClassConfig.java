@@ -20,7 +20,7 @@ import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperCla
 import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectCreater;
 import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperObjectProcessor;
 import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperClass.RowMapperTableNameResolver;
-import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
+import org.springframework.jdbc.roma.api.factory.RowMapperFieldGeneratorFactory;
 
 /**
  * @author Serkan ÖZAL
@@ -28,7 +28,7 @@ import org.springframework.jdbc.roma.api.factory.RowMapperGeneratorFactory;
 public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperGeneratorFactory> generatorFactoryClass;
+	private Class<? extends RowMapperFieldGeneratorFactory> fieldGeneratorFactoryClass;
 	@SuppressWarnings("rawtypes")
 	private Class<? extends RowMapperObjectCreater> objectCreaterClass;
 	@SuppressWarnings("rawtypes")
@@ -40,13 +40,13 @@ public class RowMapperClassConfig extends BaseRowMapperClassConfig {
 	private String tableName;
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperGeneratorFactory> getGeneratorFactoryClass() {
-		return generatorFactoryClass;
+	public Class<? extends RowMapperFieldGeneratorFactory> getFieldGeneratorFactoryClass() {
+		return fieldGeneratorFactoryClass;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void setGeneratorFactoryClass(Class<? extends RowMapperGeneratorFactory> generatorFactoryClass) {
-		this.generatorFactoryClass = generatorFactoryClass;
+	public void setFieldGeneratorFactoryClass(Class<? extends RowMapperFieldGeneratorFactory> fieldGeneratorFactoryClass) {
+		this.fieldGeneratorFactoryClass = fieldGeneratorFactoryClass;
 	}
 	
 	@SuppressWarnings("rawtypes")

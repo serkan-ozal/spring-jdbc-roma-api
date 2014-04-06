@@ -20,7 +20,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.sql.ResultSet;
+
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperField.RowMapperFieldMapper;
 
 /**
  * @author Serkan ÖZAL
@@ -30,12 +31,6 @@ import java.sql.ResultSet;
 public @interface RowMapperCustomProvider {
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperObjectFieldProcessor> objectFieldProcessor() default RowMapperObjectFieldProcessor.class;
-	
-	public interface RowMapperObjectFieldProcessor<T> {
-
-		public void processObjectField(T obj, String fieldName, ResultSet rs, int rowNum);
-		
-	}
+	public Class<? extends RowMapperFieldMapper> fieldMapper() default RowMapperFieldMapper.class;
 
 }
