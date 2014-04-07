@@ -21,37 +21,27 @@ package org.springframework.jdbc.roma.api.domain.model.config;
  */
 public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 
-	private RowMapperSpringProviderConfig rowMapperSpringProviderConfig;
-	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
-	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
-	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig;
+	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
+	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
 
-	public RowMapperSpringProviderConfig getRowMapperSpringProviderConfig() {
-		return rowMapperSpringProviderConfig;
-	}
-
-	public void setRowMapperSpringProviderConfig(RowMapperSpringProviderConfig rowMapperSpringProviderConfig) {
-		this.rowMapperSpringProviderConfig = rowMapperSpringProviderConfig;
+	public RowMapperExpressionProviderConfig getRowMapperExpressionProviderConfig() {
+		return rowMapperExpressionProviderConfig;
 	}
 	
+	public void setRowMapperExpressionProviderConfig(RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
+		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;
+	}
+
 	public RowMapperSqlProviderConfig getRowMapperSqlProviderConfig() {
 		return rowMapperSqlProviderConfig;
 	}
 	
 	public void setRowMapperSqlProviderConfig(RowMapperSqlProviderConfig rowMapperSqlProviderConfig) {
 		this.rowMapperSqlProviderConfig = rowMapperSqlProviderConfig;
-	}
-
-	public RowMapperImplementationProviderConfig getRowMapperImplementationProviderConfig() {
-		return rowMapperImplementationProviderConfig;
-	}
-
-	public void setRowMapperImplementationProviderConfig(RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig) {
-		this.rowMapperImplementationProviderConfig = rowMapperImplementationProviderConfig;
 	}
 
 	public RowMapperCustomProviderConfig getRowMapperCustomProviderConfig() {
@@ -62,14 +52,6 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 		this.rowMapperCustomProviderConfig = rowMapperCustomProviderConfig;
 	}
 	
-	public RowMapperExpressionProviderConfig getRowMapperExpressionProviderConfig() {
-		return rowMapperExpressionProviderConfig;
-	}
-	
-	public void setRowMapperExpressionProviderConfig(RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
-		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;
-	}
-
 	public Class<?> getFieldType() {
 		return fieldType;
 	}

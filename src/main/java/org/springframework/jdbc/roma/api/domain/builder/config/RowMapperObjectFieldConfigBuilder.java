@@ -21,10 +21,8 @@ import java.lang.reflect.Field;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperExpressionProviderConfig;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperImplementationProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyConditionConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSpringProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
 
 /**
@@ -33,11 +31,9 @@ import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProvide
 public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjectFieldConfig> {
 
 	private Field field;
-	private RowMapperSpringProviderConfig rowMapperSpringProviderConfig;
-	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
-	private RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig;
-	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig;
+	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
+	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
@@ -46,11 +42,9 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	public RowMapperObjectFieldConfig build() {
 		RowMapperObjectFieldConfig config = new RowMapperObjectFieldConfig();
 		config.setField(field);
-		config.setRowMapperSpringProviderConfig(rowMapperSpringProviderConfig);
-		config.setRowMapperSqlProviderConfig(rowMapperSqlProviderConfig);
-		config.setRowMapperImplementationProviderConfig(rowMapperImplementationProviderConfig);
-		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
 		config.setRowMapperExpressionProviderConfig(rowMapperExpressionProviderConfig);
+		config.setRowMapperSqlProviderConfig(rowMapperSqlProviderConfig);
+		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
 		config.setFieldType(fieldType);
 		config.setLazy(lazy);
 		config.setRowMapperLazyConditionConfig(rowMapperLazyConditionConfig);
@@ -61,10 +55,10 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		this.field = field;
 		return this;
 	}
-	
-	public RowMapperObjectFieldConfigBuilder rowMapperSpringProviderConfig(
-			RowMapperSpringProviderConfig rowMapperSpringProviderConfig) {
-		this.rowMapperSpringProviderConfig = rowMapperSpringProviderConfig;
+
+	public RowMapperObjectFieldConfigBuilder rowMapperExpressionProviderConfig(
+			RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
+		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;	
 		return this;
 	}
 	
@@ -73,19 +67,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		this.rowMapperSqlProviderConfig = rowMapperSqlProviderConfig;
 		return this;
 	}
-	
-	public RowMapperObjectFieldConfigBuilder rowMapperImplementationProviderConfig(
-			RowMapperImplementationProviderConfig rowMapperImplementationProviderConfig) {
-		this.rowMapperImplementationProviderConfig = rowMapperImplementationProviderConfig;
-		return this;
-	}
-	
-	public RowMapperObjectFieldConfigBuilder rowMapperExpressionProviderConfig(
-			RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig) {
-		this.rowMapperExpressionProviderConfig = rowMapperExpressionProviderConfig;	
-		return this;
-	}
-	
+
 	public RowMapperObjectFieldConfigBuilder rowMapperCustomProviderConfig(
 			RowMapperCustomProviderConfig rowMapperCustomProviderConfig) {
 		this.rowMapperCustomProviderConfig = rowMapperCustomProviderConfig;	
