@@ -36,7 +36,6 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	private RowMapperExpressionProviderConfig rowMapperExpressionProviderConfig;
 	private RowMapperSqlProviderConfig rowMapperSqlProviderConfig;
 	private RowMapperCustomProviderConfig rowMapperCustomProviderConfig;
-	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
 	private RowMapperLazyLoadConditionConfig rowMapperLazyLoadConditionConfig;
@@ -49,7 +48,6 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		config.setRowMapperExpressionProviderConfig(rowMapperExpressionProviderConfig);
 		config.setRowMapperSqlProviderConfig(rowMapperSqlProviderConfig);
 		config.setRowMapperCustomProviderConfig(rowMapperCustomProviderConfig);
-		config.setFieldType(fieldType);
 		config.setLazy(lazy);
 		config.setRowMapperLazyConditionConfig(rowMapperLazyConditionConfig);
 		config.setRowMapperLazyLoadConditionConfig(rowMapperLazyLoadConditionConfig);
@@ -79,12 +77,7 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		this.rowMapperCustomProviderConfig = rowMapperCustomProviderConfig;	
 		return this;
 	}
-	
-	public RowMapperObjectFieldConfigBuilder fieldType(Class<?> fieldType) {
-		this.fieldType = fieldType;
-		return this;
-	}
-	
+
 	public RowMapperObjectFieldConfigBuilder lazy(boolean lazy) {
 		this.lazy = lazy;
 		return this;
