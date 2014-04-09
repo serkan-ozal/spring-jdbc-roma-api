@@ -16,17 +16,17 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
-import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperLazyCondition.RowMapperLazyConditionProvider;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperLazyLoadCondition.RowMapperLazyLoadConditionProvider;
 
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperLazyConditionConfig extends BaseRowMapperFieldConfig {
+public class RowMapperLazyLoadConditionConfig extends BaseRowMapperFieldConfig {
 
 	private String propertyName;
 	private String expression;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass;
+	private Class<? extends RowMapperLazyLoadConditionProvider> lazyLoadConditionProviderClass;
 	
 	public String getPropertyName() {
 		return propertyName;
@@ -45,14 +45,14 @@ public class RowMapperLazyConditionConfig extends BaseRowMapperFieldConfig {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperLazyConditionProvider> getLazyConditionProviderClass() {
-		return lazyConditionProviderClass;
+	public Class<? extends RowMapperLazyLoadConditionProvider> getLazyLoadConditionProviderClass() {
+		return lazyLoadConditionProviderClass;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void setLazyConditionProviderClass(
-			Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass) {
-		this.lazyConditionProviderClass = lazyConditionProviderClass;
+	public void setLazyLoadConditionProviderClass(
+			Class<? extends RowMapperLazyLoadConditionProvider> lazyLoadConditionProviderClass) {
+		this.lazyLoadConditionProviderClass = lazyLoadConditionProviderClass;
 	}
 	
 }

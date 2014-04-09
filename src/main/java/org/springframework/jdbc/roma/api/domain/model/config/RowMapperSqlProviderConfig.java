@@ -16,6 +16,8 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperSqlProvider.RowMapperSqlQueryInfoProvider;
+
 /**
  * @author Serkan ÖZAL
  */
@@ -24,6 +26,8 @@ public class RowMapperSqlProviderConfig extends BaseRowMapperFieldConfig {
 	private String provideSql;
 	private String dataSourceName;
 	private Class<?> entityType;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperSqlQueryInfoProvider> sqlQueryInfoProviderClass;
 	
 	public String getProvideSql() {
 		return provideSql;
@@ -47,6 +51,16 @@ public class RowMapperSqlProviderConfig extends BaseRowMapperFieldConfig {
 	
 	public void setEntityType(Class<?> entityType) {
 		this.entityType = entityType;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Class<? extends RowMapperSqlQueryInfoProvider> getSqlQueryInfoProviderClass() {
+		return sqlQueryInfoProviderClass;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setSqlQueryInfoProviderClass(Class<? extends RowMapperSqlQueryInfoProvider> sqlQueryInfoProviderClass) {
+		this.sqlQueryInfoProviderClass = sqlQueryInfoProviderClass;
 	}
 
 }

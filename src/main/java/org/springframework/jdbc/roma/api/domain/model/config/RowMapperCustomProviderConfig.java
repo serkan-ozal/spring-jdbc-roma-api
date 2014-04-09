@@ -16,7 +16,7 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
-import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperField.RowMapperFieldMapper;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperCustomProvider.RowMapperFieldProvider;
 
 /**
  * @author Serkan ÖZAL
@@ -24,16 +24,16 @@ import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperFie
 public class RowMapperCustomProviderConfig extends BaseRowMapperFieldConfig {
 
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperFieldMapper> fieldMapperClass;
+	private Class<? extends RowMapperFieldProvider> fieldProviderClass;
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperFieldMapper> getFieldMapperClass() {
-		return fieldMapperClass;
+	public Class<? extends RowMapperFieldProvider> getFieldProviderClass() {
+		return fieldProviderClass;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void setFieldMapperClass(Class<? extends RowMapperFieldMapper> fieldMapperClass) {
-		this.fieldMapperClass = fieldMapperClass;
+	public void setFieldProviderClass(Class<? extends RowMapperFieldProvider> fieldProviderClass) {
+		this.fieldProviderClass = fieldProviderClass;
 	}
 
 }

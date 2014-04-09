@@ -18,52 +18,52 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
-import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperLazyCondition.RowMapperLazyConditionProvider;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperLazyLoadCondition.RowMapperLazyLoadConditionProvider;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
-import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyConditionConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyLoadConditionConfig;
 
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperLazyConditionConfigBuilder implements Builder<RowMapperLazyConditionConfig> {
+public class RowMapperLazyLoadConditionConfigBuilder implements Builder<RowMapperLazyLoadConditionConfig> {
 
 	private Field field;
 	private String propertyName;
 	private String expression;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass;
+	private Class<? extends RowMapperLazyLoadConditionProvider> lazyLoadConditionProviderClass;
 	
 	@Override
-	public RowMapperLazyConditionConfig build() {
-		RowMapperLazyConditionConfig config = new RowMapperLazyConditionConfig();
+	public RowMapperLazyLoadConditionConfig build() {
+		RowMapperLazyLoadConditionConfig config = new RowMapperLazyLoadConditionConfig();
 		config.setField(field);
 		config.setPropertyName(propertyName);
 		config.setExpression(expression);
-		config.setLazyConditionProviderClass(lazyConditionProviderClass);
+		config.setLazyLoadConditionProviderClass(lazyLoadConditionProviderClass);
 		return config;
 	}
 	
-	public RowMapperLazyConditionConfigBuilder field(Field field) {
+	public RowMapperLazyLoadConditionConfigBuilder field(Field field) {
 		this.field = field;
 		return this;
 	}
 	
-	public RowMapperLazyConditionConfigBuilder propertyName(String propertyName) {
+	public RowMapperLazyLoadConditionConfigBuilder propertyName(String propertyName) {
 		this.propertyName = propertyName;
 		return this;
 	}
 
-	public RowMapperLazyConditionConfigBuilder expression(String expression) {
+	public RowMapperLazyLoadConditionConfigBuilder expression(String expression) {
 		this.expression = expression;
 		return this;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public RowMapperLazyConditionConfigBuilder lazyConditionProviderClass(
-			Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass) {
-		if (lazyConditionProviderClass != null && 
-				lazyConditionProviderClass.equals(RowMapperLazyConditionProvider.class) == false) {
-			this.lazyConditionProviderClass = lazyConditionProviderClass;
+	public RowMapperLazyLoadConditionConfigBuilder lazyLoadConditionProviderClass(
+			Class<? extends RowMapperLazyLoadConditionProvider> lazyLoadConditionProviderClass) {
+		if (lazyLoadConditionProviderClass != null && 
+				lazyLoadConditionProviderClass.equals(RowMapperLazyLoadConditionProvider.class) == false) {
+			this.lazyLoadConditionProviderClass = lazyLoadConditionProviderClass;
 		}	
 		return this;
 	}

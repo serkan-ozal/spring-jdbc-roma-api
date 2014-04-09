@@ -33,8 +33,10 @@ public @interface RowMapperObjectField {
 	public RowMapperCustomProvider provideViaCustomProvider() default @RowMapperCustomProvider;
 	
 	public Class<?> fieldType() default Object.class;
-	public boolean lazy() default false;
 	
+	public boolean lazy() default false;
 	public RowMapperLazyCondition lazyCondition() default @RowMapperLazyCondition;
+	public RowMapperLazyLoadCondition lazyLoadCondition() default @RowMapperLazyLoadCondition;
+	public RowMapperIgnoreCondition ignoreCondition() default @RowMapperIgnoreCondition;
 	
 }

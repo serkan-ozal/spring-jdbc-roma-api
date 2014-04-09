@@ -18,6 +18,7 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperSqlProvider.RowMapperSqlQueryInfoProvider;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
 
@@ -30,6 +31,8 @@ public class RowMapperSqlProviderConfigBuilder implements Builder<RowMapperSqlPr
 	private String provideSql;
 	private String dataSourceName;
 	private Class<?> entityType;
+	@SuppressWarnings("rawtypes")
+	private Class<? extends RowMapperSqlQueryInfoProvider> sqlQueryInfoProviderClass;
 	
 	@Override
 	public RowMapperSqlProviderConfig build() {
@@ -38,6 +41,7 @@ public class RowMapperSqlProviderConfigBuilder implements Builder<RowMapperSqlPr
 		config.setProvideSql(provideSql);
 		config.setDataSourceName(dataSourceName);
 		config.setEntityType(entityType);
+		config.setSqlQueryInfoProviderClass(sqlQueryInfoProviderClass);
 		return config;
 	}
 	
@@ -58,6 +62,15 @@ public class RowMapperSqlProviderConfigBuilder implements Builder<RowMapperSqlPr
 	
 	public RowMapperSqlProviderConfigBuilder entityType(Class<?> entityType) {
 		this.entityType = entityType;
+		return this;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public RowMapperSqlProviderConfigBuilder sqlQueryInfoProviderClass(
+			Class<? extends RowMapperSqlQueryInfoProvider> sqlQueryInfoProviderClass) {
+		if (sqlQueryInfoProviderClass != null && sqlQueryInfoProviderClass.equals(RowMapperSqlQueryInfoProvider.class) == false) {
+			this.sqlQueryInfoProviderClass = sqlQueryInfoProviderClass;
+		}
 		return this;
 	}
 	

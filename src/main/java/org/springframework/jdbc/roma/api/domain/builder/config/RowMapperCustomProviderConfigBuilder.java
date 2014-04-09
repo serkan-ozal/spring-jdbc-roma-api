@@ -18,7 +18,7 @@ package org.springframework.jdbc.roma.api.domain.builder.config;
 
 import java.lang.reflect.Field;
 
-import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperField.RowMapperFieldMapper;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperCustomProvider.RowMapperFieldProvider;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
 
@@ -29,13 +29,13 @@ public class RowMapperCustomProviderConfigBuilder implements Builder<RowMapperCu
 
 	private Field field;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperFieldMapper> fieldMapperClass;
+	private Class<? extends RowMapperFieldProvider> fieldProviderClass;
 	
 	@Override
 	public RowMapperCustomProviderConfig build() {
 		RowMapperCustomProviderConfig config = new RowMapperCustomProviderConfig();
 		config.setField(field);
-		config.setFieldMapperClass(fieldMapperClass);
+		config.setFieldProviderClass(fieldProviderClass);
 		return config;
 	}
 	
@@ -45,9 +45,11 @@ public class RowMapperCustomProviderConfigBuilder implements Builder<RowMapperCu
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public RowMapperCustomProviderConfigBuilder fieldMapperClass(
-			Class<? extends RowMapperFieldMapper> fieldMapperClass) {
-		this.fieldMapperClass = fieldMapperClass;
+	public RowMapperCustomProviderConfigBuilder fieldProviderClass(
+			Class<? extends RowMapperFieldProvider> fieldProviderClass) {
+		if (fieldProviderClass != null && fieldProviderClass.equals(RowMapperFieldProvider.class) == false) {
+			this.fieldProviderClass = fieldProviderClass;
+		}	
 		return this;
 	}
 

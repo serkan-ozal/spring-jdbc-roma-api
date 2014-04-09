@@ -16,17 +16,17 @@
 
 package org.springframework.jdbc.roma.api.domain.model.config;
 
-import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperLazyCondition.RowMapperLazyConditionProvider;
+import org.springframework.jdbc.roma.api.config.provider.annotation.RowMapperIgnoreCondition.RowMapperIgnoreConditionProvider;
 
 /**
  * @author Serkan ÖZAL
  */
-public class RowMapperLazyConditionConfig extends BaseRowMapperFieldConfig {
+public class RowMapperIgnoreConditionConfig extends BaseRowMapperFieldConfig {
 
 	private String propertyName;
 	private String expression;
 	@SuppressWarnings("rawtypes")
-	private Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass;
+	private Class<? extends RowMapperIgnoreConditionProvider> ignoreConditionProviderClass;
 	
 	public String getPropertyName() {
 		return propertyName;
@@ -45,14 +45,14 @@ public class RowMapperLazyConditionConfig extends BaseRowMapperFieldConfig {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperLazyConditionProvider> getLazyConditionProviderClass() {
-		return lazyConditionProviderClass;
+	public Class<? extends RowMapperIgnoreConditionProvider> getIgnoreConditionProviderClass() {
+		return ignoreConditionProviderClass;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void setLazyConditionProviderClass(
-			Class<? extends RowMapperLazyConditionProvider> lazyConditionProviderClass) {
-		this.lazyConditionProviderClass = lazyConditionProviderClass;
+	public void setIgnoreConditionProviderClass(
+			Class<? extends RowMapperIgnoreConditionProvider> ignoreConditionProviderClass) {
+		this.ignoreConditionProviderClass = ignoreConditionProviderClass;
 	}
 	
 }

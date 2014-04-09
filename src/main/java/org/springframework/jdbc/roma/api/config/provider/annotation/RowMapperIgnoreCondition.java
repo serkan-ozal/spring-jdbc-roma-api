@@ -20,25 +20,24 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.sql.ResultSet;
 
 /**
  * @author Serkan ÖZAL
  */
 @Target({ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperLazyCondition {
+public @interface RowMapperIgnoreCondition {
 	
-	public RowMapperPropertyBasedLazyConditionProvider provideViaPropertyBasedProvider() 
-				default @RowMapperPropertyBasedLazyConditionProvider;
-	public RowMapperExpressionBasedLazyConditionProvider provideViaExpressionBasedProvider() 
-				default @RowMapperExpressionBasedLazyConditionProvider;
-	public RowMapperCustomLazyConditionProvider provideViaCustomProvider() 
-				default @RowMapperCustomLazyConditionProvider;
+	public RowMapperPropertyBasedIgnoreConditionProvider provideViaPropertyBasedProvider() 
+				default @RowMapperPropertyBasedIgnoreConditionProvider;
+	public RowMapperExpressionBasedIgnoreConditionProvider provideViaExpressionBasedProvider() 
+				default @RowMapperExpressionBasedIgnoreConditionProvider;
+	public RowMapperCustomIgnoreConditionProvider provideViaCustomProvider() 
+				default @RowMapperCustomIgnoreConditionProvider;
 	
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface RowMapperPropertyBasedLazyConditionProvider {
+	public @interface RowMapperPropertyBasedIgnoreConditionProvider {
 	 	
 		public String propertyName() default "";
 		
@@ -46,7 +45,7 @@ public @interface RowMapperLazyCondition {
 	 
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface RowMapperExpressionBasedLazyConditionProvider {
+	public @interface RowMapperExpressionBasedIgnoreConditionProvider {
 	 	
 		public String expression() default "";
 		
@@ -54,17 +53,17 @@ public @interface RowMapperLazyCondition {
 	 
 	@Target({ElementType.ANNOTATION_TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface RowMapperCustomLazyConditionProvider {
+	public @interface RowMapperCustomIgnoreConditionProvider {
 	 	
 		@SuppressWarnings("rawtypes")
-		public Class<? extends RowMapperLazyConditionProvider> lazyConditionProvider() 
-				default RowMapperLazyConditionProvider.class;
+		public Class<? extends RowMapperIgnoreConditionProvider> ignoreConditionProvider() 
+				default RowMapperIgnoreConditionProvider.class;
 		
 	} 
 	
-	public interface RowMapperLazyConditionProvider<T> {
+	public interface RowMapperIgnoreConditionProvider<T> {
 
-		public boolean evaluateCondition(T obj, String fieldName, ResultSet rs, int rowNum);
+		public boolean evaluateCondition(T obj, String fieldName);
 		
 	}
 

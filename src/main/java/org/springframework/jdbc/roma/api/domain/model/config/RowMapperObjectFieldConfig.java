@@ -27,6 +27,8 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
+	private RowMapperLazyLoadConditionConfig rowMapperLazyLoadConditionConfig;
+	private RowMapperIgnoreConditionConfig rowMapperIgnoreConditionConfig;
 
 	public RowMapperExpressionProviderConfig getRowMapperExpressionProviderConfig() {
 		return rowMapperExpressionProviderConfig;
@@ -74,6 +76,22 @@ public class RowMapperObjectFieldConfig extends BaseRowMapperFieldConfig {
 	
 	public void setRowMapperLazyConditionConfig(RowMapperLazyConditionConfig rowMapperLazyConditionConfig) {
 		this.rowMapperLazyConditionConfig = rowMapperLazyConditionConfig;
+	}
+	
+	public RowMapperLazyLoadConditionConfig getRowMapperLazyLoadConditionConfig() {
+		return rowMapperLazyLoadConditionConfig;
+	}
+	
+	public void setRowMapperLazyLoadConditionConfig(RowMapperLazyLoadConditionConfig rowMapperLazyLoadConditionConfig) {
+		this.rowMapperLazyLoadConditionConfig = rowMapperLazyLoadConditionConfig;
+	}
+	
+	public RowMapperIgnoreConditionConfig getRowMapperIgnoreConditionConfig() {
+		return rowMapperIgnoreConditionConfig;
+	}
+	
+	public void setRowMapperIgnoreConditionConfig(RowMapperIgnoreConditionConfig rowMapperIgnoreConditionConfig) {
+		this.rowMapperIgnoreConditionConfig = rowMapperIgnoreConditionConfig;
 	}
 
 }

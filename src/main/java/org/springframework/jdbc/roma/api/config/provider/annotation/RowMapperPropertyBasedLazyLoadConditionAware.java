@@ -24,37 +24,17 @@ import java.lang.annotation.Target;
 /**
  * @author Serkan ÖZAL
  */
-@Target({ElementType.ANNOTATION_TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RowMapperSqlProvider {
+public @interface RowMapperPropertyBasedLazyLoadConditionAware {
 	
-	public String provideSql() default "";
-	public String dataSourceName() default "";
-	public Class<?> entityType() default Object.class;
-	@SuppressWarnings("rawtypes")
-	public Class<? extends RowMapperSqlQueryInfoProvider> sqlQueryInfoProvider() 
-				default RowMapperSqlQueryInfoProvider.class;
+	public static final int ENABLE_ON_START = 1;
+	public static final int DISABLE_ON_START = 2;
+	public static final int ENABLE_ON_FINISH = 4;
+	public static final int DISABLE_ON_FINISH = 8;
+	public static final int DEFAULT_OPTIONS = ENABLE_ON_START | DISABLE_ON_FINISH;
 	
-	public static class SqlQueryInfo {
-		
-		public String sqlQuery;
-		public Object[] args;
-		
-		public SqlQueryInfo() {
-			
-		}
-		
-		public SqlQueryInfo(String sqlQuery, Object[] args) {
-			this.sqlQuery = sqlQuery;
-			this.args = args;
-		}
-
-	}
-	
-	public interface RowMapperSqlQueryInfoProvider<T> {
-
-		public SqlQueryInfo provideSqlQueryInfo(T obj, String fieldName);
-		
-	}
+	public String propertyName();
+	public int options() default DEFAULT_OPTIONS;
 	
 }

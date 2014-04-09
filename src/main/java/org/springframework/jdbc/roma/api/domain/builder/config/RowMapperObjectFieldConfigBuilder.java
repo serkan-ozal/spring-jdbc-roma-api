@@ -21,7 +21,9 @@ import java.lang.reflect.Field;
 import org.springframework.jdbc.roma.api.domain.builder.Builder;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperCustomProviderConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperExpressionProviderConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperIgnoreConditionConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyConditionConfig;
+import org.springframework.jdbc.roma.api.domain.model.config.RowMapperLazyLoadConditionConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperObjectFieldConfig;
 import org.springframework.jdbc.roma.api.domain.model.config.RowMapperSqlProviderConfig;
 
@@ -37,6 +39,8 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	private Class<?> fieldType;
 	private boolean lazy = false;
 	private RowMapperLazyConditionConfig rowMapperLazyConditionConfig;
+	private RowMapperLazyLoadConditionConfig rowMapperLazyLoadConditionConfig;
+	private RowMapperIgnoreConditionConfig rowMapperIgnoreConditionConfig;
 	
 	@Override
 	public RowMapperObjectFieldConfig build() {
@@ -48,6 +52,8 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 		config.setFieldType(fieldType);
 		config.setLazy(lazy);
 		config.setRowMapperLazyConditionConfig(rowMapperLazyConditionConfig);
+		config.setRowMapperLazyLoadConditionConfig(rowMapperLazyLoadConditionConfig);
+		config.setRowMapperIgnoreConditionConfig(rowMapperIgnoreConditionConfig);
 		return config;
 	}
 	
@@ -87,6 +93,18 @@ public class RowMapperObjectFieldConfigBuilder implements Builder<RowMapperObjec
 	public RowMapperObjectFieldConfigBuilder rowMapperLazyConditionConfig(
 			RowMapperLazyConditionConfig rowMapperLazyConditionConfig) {
 		this.rowMapperLazyConditionConfig = rowMapperLazyConditionConfig;	
+		return this;
+	}
+	
+	public RowMapperObjectFieldConfigBuilder rowMapperLazyLoadConditionConfig(
+			RowMapperLazyLoadConditionConfig rowMapperLazyLoadConditionConfig) {
+		this.rowMapperLazyLoadConditionConfig = rowMapperLazyLoadConditionConfig;	
+		return this;
+	}
+	
+	public RowMapperObjectFieldConfigBuilder rowMapperIgnoreConditionConfig(
+			RowMapperIgnoreConditionConfig rowMapperIgnoreConditionConfig) {
+		this.rowMapperIgnoreConditionConfig = rowMapperIgnoreConditionConfig;	
 		return this;
 	}
 
