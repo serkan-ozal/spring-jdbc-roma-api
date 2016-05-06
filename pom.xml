@@ -55,15 +55,18 @@
         </resources>
     </build>
     
-    <repositories>
-        <repository>
-            <id>nexus-maven-repository</id>
-            <url>https://maven-us.nuxeo.org/nexus/content/groups/public/</url>
-        </repository>
-		<repository>
-			<id>my-maven-repository</id>
-			<url>https://github.com/serkan-ozal/maven-repository/raw/master/</url>
-		</repository>
-	</repositories>
+    <scm>
+        <connection>scm:git:https://github.com/serkan-ozal/spring-jdbc-roma-api.git</connection>
+        <developerConnection>scm:git:git@github.com:serkan-ozal/spring-jdbc-roma-api.git</developerConnection>
+        <url>https://github.com/serkan-ozal/spring-jdbc-roma-api</url>
+        <tag>HEAD</tag>
+    </scm>
     
+    <distributionManagement>
+        <repository>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/serkan-ozal/maven/spring-jdbc-roma-api/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
 </project>
